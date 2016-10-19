@@ -1,0 +1,124 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    {{ include('EFPUserBundle:User:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-6">
+				<div class="page-header">
+					<h2>{% trans %}Editar Alumno{% endtrans %}</h2>
+				</div>
+				{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'role' : 'form'}}) }}
+				<h4 class="text-danger">{{ form_errors(form) }}</h4>
+                     
+					<fieldset>
+					    <div class="form-group">
+					        {{ form_label(form.username) }}
+					        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder' : 'Your username'}}) }}
+					        <span class="text-danger">{{ form_errors(form.username) }}</span>
+					    </div>
+                          
+					    <div class="form-group">
+					        {{ form_label(form.firstName) }}
+					        {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder' : 'Your first name'}}) }}
+					        <span class="text-danger">{{ form_errors(form.firstName) }}</span>
+					    </div>
+                           
+					    <div class="form-group">
+					        {{ form_label(form.lastName) }}
+					        {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder' : 'Your last name'}}) }}
+					        <span class="text-danger">{{ form_errors(form.lastName) }}</span>
+					    </div>
+					    
+					     <div class="form-group">
+					        {{ form_label(form.dni) }}
+					        {{ form_widget(form.dni, {'attr': {'class': 'form-control', 'placeholder' : 'DNI'}}) }}
+					        <span class="text-danger">{{ form_errors(form.dni) }}</span>
+					    </div>
+					     <div class="form-group">
+					        {{ form_label(form.direccion) }}
+					        {{ form_widget(form.direccion, {'attr': {'class': 'form-control', 'placeholder' : 'Dirección'}}) }}
+					        <span class="text-danger">{{ form_errors(form.direccion) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.ciudad) }}
+					        {{ form_widget(form.ciudad, {'attr': {'class': 'form-control', 'placeholder' : 'Ciudad'}}) }}
+					        <span class="text-danger">{{ form_errors(form.ciudad) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.provincia) }}
+					        {{ form_widget(form.provincia, {'attr': {'class': 'form-control', 'placeholder' : 'Provincia'}}) }}
+					        <span class="text-danger">{{ form_errors(form.provincia) }}</span>
+					    </div>
+					   <div class="form-group">
+					        {{ form_label(form.cp) }}
+					        {{ form_widget(form.cp, {'attr': {'class': 'form-control', 'placeholder' : 'CP'}}) }}
+					        <span class="text-danger">{{ form_errors(form.cp) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.telfijo) }}
+					        {{ form_widget(form.telfijo, {'attr': {'class': 'form-control', 'placeholder' : 'Teléfono Fijo'}}) }}
+					        <span class="text-danger">{{ form_errors(form.telfijo) }}</span>
+					    </div>
+					     <div class="form-group">
+					        {{ form_label(form.telmovil) }}
+					        {{ form_widget(form.telmovil, {'attr': {'class': 'form-control', 'placeholder' : 'Teléfono Móvil'}}) }}
+					        <span class="text-danger">{{ form_errors(form.telmovil) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.email) }}
+					        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Your email'}}) }}
+					        <span class="text-danger">{{ form_errors(form.email) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.fechnac) }}
+					        {{ form_widget(form.fechnac, {'attr': {'class': 'form-control', 'placeholder' : 'Fecha de Nacimiento'}}) }}
+					        <span class="text-danger">{{ form_errors(form.fechnac) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.feching) }}
+					        {{ form_widget(form.feching, {'attr': {'class': 'form-control', 'placeholder' : 'Fecha de Ingreso'}}) }}
+					        <span class="text-danger">{{ form_errors(form.feching) }}</span>
+					    </div>
+					     <div class="form-group">
+					        {{ form_label(form.fechreing) }}
+					        {{ form_widget(form.fechreing, {'attr': {'class': 'form-control', 'placeholder' : 'Fecha de Re-Ingreso'}}) }}
+					        <span class="text-danger">{{ form_errors(form.fechreing) }}</span>
+					    </div>
+					     <div class="form-group">
+					        {{ form_label(form.tipoalumno) }}
+					        {{ form_widget(form.tipoalumno, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.tipoalumno) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.password) }}
+					        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder' : 'Your password'}}) }}
+					        <span class="text-danger">{{ form_errors(form.password) }}</span>
+					    </div>
+
+					    <div class="form-group">
+					        {{ form_label(form.role) }}
+					        {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.role) }}</span>
+					    </div>
+
+						<div class="checkbox">
+						    <label>
+								{{ form_widget(form.isActive) }} {% trans %}Active{% endtrans %}
+								<span class="text-danger">{{ form_errors(form.role) }}</span>
+						    </label>
+						</div>
+
+				 	</fieldset>
+                     
+				    <p>
+				        {{ form_widget(form.save, {'label' : 'Modificar Alumno', 'attr': {'class': 'btn btn-success'}}) }}
+				    </p>
+                 
+                   
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+efp_user_homepage:
+    path:    /hello/{name}
+    defaults: { _controller: EFPUserBundle:Default:index }
+
+efp_user_index:
+    path:    /user/index
+    defaults: { _controller: EFPUserBundle:User:index }
+    
+efp_user_add:
+    path:    /user/add
+    defaults: { _controller: EFPUserBundle:User:add }
+
+efp_user_create:
+    path:    /user/create
+    defaults: { _controller: EFPUserBundle:User:create }
+    methods: POST
+
+efp_user_edit:
+    path:    /user/edit/{id}
+    defaults: { _controller: EFPUserBundle:User:edit }
+    
+efp_user_update:
+    path:    /user/update/{id}
+    defaults: { _controller: EFPUserBundle:User:update }
+    methods: [POST,PUT]
+    
+efp_user_view:
+    path:    /user/view/{id}
+    defaults: { _controller: EFPUserBundle:User:view }
+    
+efp_user_delete:
+    path:    /user/delete/{id}
+    defaults: { _controller: EFPUserBundle:User:delete }
+    methods: [POST,DELETE]

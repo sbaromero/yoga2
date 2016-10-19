@@ -1,0 +1,167 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+	<div class="container well">
+	    <div class="col-md-9">
+	    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+	        <br>
+	        <dl>
+	            
+	            <dt>{{'Username'|trans}}</dt>
+	            <dd>
+	                {{ user.username }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{'First name'|trans}}</dt>
+	            <dd>
+	                {{ user.firstName }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{'Last name'|trans}}</dt>
+	            <dd>
+	                {{ user.lastName }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+               <dt>{{'DNI'|trans}}</dt>
+	            <dd>
+	                {{ user.dni }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            
+	            <dt>{{'Dirección'|trans}}</dt>
+	            <dd>
+	                {{ user.direccion }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Ciudad'|trans}}</dt>
+	            <dd>
+	                {{ user.ciudad }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Provincia'|trans}}</dt>
+	            <dd>
+	                {{ user.provincia }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'CP'|trans}}</dt>
+	            <dd>
+	                {{ user.cp }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Tel. Fijo'|trans}}</dt>
+	            <dd>
+	                {{ user.telfijo }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Tel. Movil'|trans}}</dt>
+	            <dd>
+	                {{ user.telmovil }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Email'|trans}}</dt>
+	            <dd>
+	                {{ user.email }}
+	                &nbsp;
+	            </dd>
+	             <br>
+	            <dt>{{'Fecha Nacimiento'|trans}}</dt>
+	            <dd>
+	                {{ user.fechnac }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Fecha Ingreso'|trans}}</dt>
+	            <dd>
+	                {{ user.feching }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Fecha Re-Ingreso'|trans}}</dt>
+	            <dd>
+	                {{ user.fechreing }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Tipoalumno'|trans}}</dt>
+	            <dd>
+                	{% if user.tipoalumno == 'CLASES_YOGA' %}
+						{% trans %}Clases{% endtrans %}
+					{% elseif user.tipoalumno == 'INSTRUCTORADO' %}
+						{% trans %}Instructorado{% endtrans %}
+					{% elseif user.tipoalumno == 'PROFESORADO' %}
+						{% trans %}Profesorado{% endtrans %}
+					{% elseif user.tipoalumno == 'POSGRADO' %}
+					    {% trans %}Posgrado{% endtrans %}
+					{% elseif user.tipoalumno == 'CURSO_NATURISTA' %}
+						{% trans %}Curso{% endtrans %}
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	            <dt>{{'Role'|trans}}</dt>
+	            <dd>
+                	{% if user.role == 'ROLE_ADMIN' %}
+						{% trans %}Administrator{% endtrans %}
+					{% elseif user.role == 'ROLE_USER' %}
+						{% trans %}User{% endtrans %}
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{'Active'|trans}}</dt>
+	            <dd>
+                	{% if user.isActive == 1 %}
+						<span class="text-success">{% trans %}Enabled{% endtrans %}</span>
+					{% elseif user.isActive == 0 %}
+						<span class="text-warning">{% trans %}Disabled{% endtrans %}</span>
+                	{% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+               
+	            <dt>{{'Created'|trans}}</dt>
+	            <dd>
+	                {{ user.createdAt|date('d-m-Y') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt>{{'Updated'|trans}}</dt>
+	            <dd>
+	                {{ user.updatedAt|date('d-m-Y') }}
+	                &nbsp;
+	            </dd>
+	            <br>
+	         
+	       
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+	    	<h3>{{ 'Actions'|trans }}:</h3>
+			<p>
+		    	<a href="{{ path('efp_user_edit', { id: user.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	{{ 'Editar Alumno'|trans }}
+				 </a>
+			</p>
+			<p>
+			    {{ include('EFPUserBundle:User:forms/form.html.twig', { form: delete_form, message: 'Are you sure ?'|trans}) }}
+			</p>
+	    </div>
+	</div>
+{% endblock %}
